@@ -1,0 +1,28 @@
+# --- Python (Backend) ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+*.db
+*.sqlite3
+
+# --- Node/React (Frontend) ---
+node_modules/
+dist/
+.env-local
+.env.*-local
+*.log
+
+# --- ESP-IDF (Firmware) ---
+/firmware/build/
+/firmware/sdkconfig
+/firmware/sdkconfig.old
+.devcontainer/
+
+# --- IDEs e Sistema ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
