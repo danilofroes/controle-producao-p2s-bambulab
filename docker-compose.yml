@@ -3,10 +3,12 @@ services:
     image: eclipse-mosquitto:2.0
     container_name: smart-mqtt-broker
     ports:
-      - "1883:1883"   # Porta MQTT
-      - "9001:9001"   # Porta WebSockets
-    volumes:
-      - ./mosquitto/config:/mosquitto/config
-      - ./mosquitto/data:/mosquitto/data
-      - ./mosquitto/log:/mosquitto/log
+      - "1883:1883"
+      - "9001:9001"
+    entrypoint: >
+      sh -c "mkdir -p /mosquitto/config && 
+             echo 'listener 1883 0.0.0.0' > /mosquitto/config/mosquitto.conf && 
+             echo 'allow_anonymous true' >> /mosquitto/config/mosquitto.conf && 
+             echo 'log_dest stdout' >> /mosquitto/config/mosquitto.conf && 
+             exec mosquitto -c /mosquitto/config/mosquitto.conf"
     restart: always
